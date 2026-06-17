@@ -4,6 +4,7 @@ import LoginPage   from './pages/LoginPage'
 import DailyView   from './pages/DailyView'
 import WeeklyPlan  from './pages/WeeklyPlan'
 import AdminPage   from './pages/AdminPage'
+import ProfilePage from './pages/ProfilePage'
 import Nav         from './components/shared/Nav'
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/today"   element={<DailyView />} />
         <Route path="/plan"    element={<WeeklyPlan />} />
         <Route path="/admin"   element={<AdminPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="*"        element={<Navigate to="/today" replace />} />
       </Routes>
     </div>

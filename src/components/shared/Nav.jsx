@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useAuth } from '../../lib/AuthContext'
 import { supabase, ORG_ID } from '../../lib/supabase'
@@ -40,7 +40,9 @@ export default function Nav() {
 
       <div className={styles.right}>
         <span className={styles.orgName}>{orgName}</span>
-        <div className={styles.avatar}>{staffRow?.initials ?? '?'}</div>
+        <Link to="/profile" className={styles.avatar} title="Your profile">
+          {staffRow?.initials ?? '?'}
+        </Link>
         <button className={styles.signOut} onClick={signOut}>Sign out</button>
       </div>
     </nav>
