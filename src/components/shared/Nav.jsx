@@ -5,7 +5,7 @@ import { supabase, ORG_ID } from '../../lib/supabase'
 import styles from './Nav.module.css'
 
 export default function Nav() {
-  const { staffRow, permissions, signOut } = useAuth()
+  const { staffRow, permissions = {}, signOut } = useAuth()
   const [orgName, setOrgName] = useState('')
 
   useEffect(() => {
