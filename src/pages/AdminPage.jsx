@@ -1,9 +1,11 @@
 import { NavLink, Routes, Route, Navigate } from 'react-router-dom'
 import AdminLotLayout from './AdminLotLayout'
+import AdminRoles     from './AdminRoles'
 
 const navItems = [
   { to: 'lot',   label: 'Lot layout' },
   { to: 'staff', label: 'Staff & roles' },
+  { to: 'roles', label: 'Permissions' },
   { to: 'rules', label: 'Priority rules' },
   { to: 'notify',label: 'Notifications' },
 ]
@@ -44,6 +46,7 @@ export default function AdminPage() {
           <Route index element={<Navigate to="lot" replace />} />
           <Route path="lot"    element={<AdminLotLayout />} />
           <Route path="staff"  element={<AdminStub label="Staff & roles" />} />
+          <Route path="roles"  element={<AdminRoles />} />
           <Route path="rules"  element={<AdminStub label="Priority rules" />} />
           <Route path="notify" element={<AdminStub label="Notifications" />} />
         </Routes>

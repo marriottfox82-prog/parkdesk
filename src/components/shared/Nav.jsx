@@ -5,7 +5,7 @@ import { supabase, ORG_ID } from '../../lib/supabase'
 import styles from './Nav.module.css'
 
 export default function Nav() {
-  const { staffRow, signOut } = useAuth()
+  const { staffRow, permissions, signOut } = useAuth()
   const [orgName, setOrgName] = useState('')
 
   useEffect(() => {
@@ -17,21 +17,29 @@ export default function Nav() {
       .then(({ data }) => { if (data) setOrgName(data.name) })
   }, [])
 
+  const canAdmin = permissions.can_manage_lot
+    || permissions.can_manage_staff
+    || permissions.can_manage_rules
+
   return (
     <nav className={styles.nav}>
       <span className={styles.brand}>Park<span>Desk</span></span>
 
-      <NavLink to="/today" className={({ isActive }) =>
-        `${styles.tab} ${isActive ? styles.active : ''}`}>
-        Today
-      </NavLink>
+      {permissions.can_view_daily && (
+        <NavLink to="/today" className={({ isActive }) =>
+          `${styles.tab} ${isActive ? styles.active : ''}`}>
+          Today
+        </NavLink>
+      )}
 
-      <NavLink to="/plan" className={({ isActive }) =>
-        `${styles.tab} ${isActive ? styles.active : ''}`}>
-        Advance plan
-      </NavLink>
+      {permissions.can_view_weekly_plan && (
+        <NavLink to="/plan" className={({ isActive }) =>
+          `${styles.tab} ${isActive ? styles.active : ''}`}>
+          Advance plan
+        </NavLink>
+      )}
 
-      {staffRow?.app_role === 'admin' && (
+      {canAdmin && (
         <NavLink to="/admin/lot" className={({ isActive }) =>
           `${styles.tab} ${isActive ? styles.active : ''}`}>
           Admin
