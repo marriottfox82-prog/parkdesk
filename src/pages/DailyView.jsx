@@ -335,8 +335,12 @@ function SpaceCell({ space, isOncall, isBlocked, canNotify, sending, onNotify })
       </span>
 
       {isReserved && !isBlocked && (
-        <span style={{ position:'absolute', top:4, right:6, fontSize:10,
-                       color:'var(--purple)', opacity:0.7 }}>🔒</span>
+        <span style={{ position:'absolute', top:4, right:6, fontSize:9,
+                       background:'var(--purple-light)', color:'var(--purple)',
+                       padding:'1px 6px', borderRadius:3, fontWeight:500,
+                       border:'0.5px solid #b0a8e0' }}>
+          reserved
+        </span>
       )}
       {isOncall && !isReserved && !isBlocked && (
         <span style={{ position:'absolute', top:4, right:6, fontSize:9,
@@ -467,6 +471,17 @@ function Legend() {
         ))}
         <div style={{ display:'flex', alignItems:'center', gap:10, paddingTop:6,
                       borderTop:'0.5px solid var(--border)', marginTop:2 }}>
+          <span style={{ fontSize:9, padding:'1px 6px', borderRadius:3,
+                         border:'0.5px solid #b0a8e0', background:'var(--purple-light)',
+                         color:'var(--purple)', fontWeight:500, flexShrink:0 }}>
+            reserved
+          </span>
+          <span style={{ fontSize:12, fontWeight:500, color:'var(--text)' }}>Reserved badge</span>
+          <span style={{ fontSize:11, color:'var(--text-3)' }}>
+            Space is permanently assigned — algorithm will not change this
+          </span>
+        </div>
+        <div style={{ display:'flex', alignItems:'center', gap:10 }}>
           <span style={{ fontSize:10, padding:'2px 7px', borderRadius:3,
                          border:'0.5px solid var(--red)', background:'var(--red-light)',
                          color:'var(--red)', width:28, textAlign:'center', flexShrink:0 }}>
