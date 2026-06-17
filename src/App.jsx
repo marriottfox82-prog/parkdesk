@@ -29,7 +29,7 @@ export default function App() {
         <Route path="/"        element={<Navigate to="/today" replace />} />
         <Route path="/today"   element={<DailyView />} />
         <Route path="/plan"    element={<WeeklyPlan />} />
-        <Route path="/admin"   element={<AdminPage />} />
+        <Route path="/admin/*" element={<AdminPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="*"        element={<Navigate to="/today" replace />} />
       </Routes>
