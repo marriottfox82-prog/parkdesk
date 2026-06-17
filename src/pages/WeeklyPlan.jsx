@@ -1,16 +1,14 @@
 import { useState } from 'react'
 import { useWeeklyPlan, getWeekStart, getWeekDays, formatWeekLabel } from '../hooks/useWeeklyPlan'
 
-// Seed week hard-coded to match data — switch to getWeekStart() for live use
+// Use live week start — seed data week is 2026-06-16
+// If today has no data, navigate to that week with the arrows
 const SEED_WEEK = '2026-06-16'
 
 export default function WeeklyPlan() {
   const [weekOffset, setWeekOffset] = useState(0)
 
-  // Use seed week for offset 0, calculate from real date for others
-  const weekStart = weekOffset === 0
-    ? SEED_WEEK
-    : getWeekStart(weekOffset)
+  const weekStart = getWeekStart(weekOffset)
 
   const { spaces, allocations, roster, loading, error } = useWeeklyPlan(weekStart)
 
