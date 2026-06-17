@@ -32,7 +32,7 @@ export default function Nav() {
       </NavLink>
 
       {staffRow?.app_role === 'admin' && (
-        <NavLink to="/admin" className={({ isActive }) =>
+        <NavLink to="/admin/lot" className={({ isActive }) =>
           `${styles.tab} ${isActive ? styles.active : ''}`}>
           Admin
         </NavLink>
